@@ -1,18 +1,21 @@
 /*メニューバー*/
-.menu-bar,
-.menu-bar:even,
-.menu-bar:hover,
-.menu-bar:selected
-{
-	-fx-alignment:top-right;
-	-fx-text-fill: #000000;
-	-fx-background-color : rgba(132, 145, 196, 1);
+.emulater-pane {
+	-fx-alignment: top-right;
+	-fx-background-color : rgba(132, 145, 196, 0.5);
 }
 
-.menu-bar .label
-{
-	-fx-alignment:top-right;
+.emulater-pane > .close-button {
+    -fx-padding: 10;
+    -fx-spacing: 14;
+	-fx-background-color : rgba(132, 145, 196, 0);
+    borderpane-alignment: top-right;
 }
+
+.topmenu-bar .label
+{
+	-fx-label-padding:5 0 5 0;
+}
+
 /**
 .menu:even,
 .menu:hover,

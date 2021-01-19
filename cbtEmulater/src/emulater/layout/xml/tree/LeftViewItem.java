@@ -1,4 +1,4 @@
-package emulater.layout.xml;
+package emulater.layout.xml.tree;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import emulater.layout.xml.XmlElementInterfarcee;
 
 @XmlRootElement(name="Left")
 @XmlAccessorType(XmlAccessType.FIELD)

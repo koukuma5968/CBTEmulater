@@ -1,0 +1,17 @@
+/*メインビュー*/
+.accordion > .titled-pane > .title {
+	-fx-background-color : rgba(197, 195, 235, 0.5);
+}
+.itemview-pane .label {
+	-fx-label-padding:5;
+	-fx-alignment:top-left;
+}
+.accordion > .titled-pane > Text {
+	-fx-text-alignment:left;
+	-fx-border-style: solid ;
+	-fx-border-width: 2px;
+	-fx-border-color:rgba(132, 145, 196, 0.5);
+	-fx-wrap-text:true;
+	-fx-display-caret:false;
+	-fx-focus-traversable:false;
+}

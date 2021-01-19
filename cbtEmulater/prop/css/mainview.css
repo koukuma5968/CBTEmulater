@@ -1,0 +1,6 @@
+/*メインビュー*/
+.emulater-pane {
+	-fx-border-style: solid ;
+	-fx-border-width: 2px;
+	-fx-border-color:rgba(132, 145, 196, 1);
+}

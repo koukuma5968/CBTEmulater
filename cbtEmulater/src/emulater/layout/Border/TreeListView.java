@@ -7,9 +7,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import emulater.layout.xml.Category;
-import emulater.layout.xml.Item;
-import emulater.layout.xml.LeftViewItem;
+import emulater.layout.xml.tree.Category;
+import emulater.layout.xml.tree.Item;
+import emulater.layout.xml.tree.LeftViewItem;
 import emulater.util.JAXBUtil;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -21,6 +21,7 @@ public class TreeListView extends TreeView<String> {
 
 	public TreeListView() {
 
+		super();
 		mtree.setValue("一覧");
 		setItems();
 

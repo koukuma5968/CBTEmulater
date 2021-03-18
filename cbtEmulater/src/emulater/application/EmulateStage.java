@@ -10,34 +10,40 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class EmulateStage extends Application {
 
-	public EmulateStage() {
-		super();
-	}
+    public EmulateStage() {
+        super();
+    }
 
-	@SuppressWarnings("exports")
-	@Override
-	public void start(Stage stage) throws Exception {
+    @SuppressWarnings("exports")
+    @Override
+    public void start(Stage stage) throws Exception {
 
-		EmulateBorder pane = new EmulateBorder();
+        EmulateBorder pane = new EmulateBorder();
 
-		Scene scene = new Scene(pane);
-		ObservableList<String> style = scene.getStylesheets();
-		style.clear();
-		Path path = Paths.get("prop/css/");
-		File css = path.toFile().getAbsoluteFile();
-		for (File f : css.listFiles()) {
-			style.addAll(f.toURI().toString());
-		}
+        Scene scene = new Scene(pane);
+        ObservableList<String> style = scene.getStylesheets();
+        style.clear();
+        Path path = Paths.get("prop/css/");
+        File css = path.toFile().getAbsoluteFile();
+        for (File f : css.listFiles()) {
+            style.addAll(f.toURI().toString());
+        }
 
-		stage.setScene(scene);
-		stage.setFullScreen(true);
-		stage.setFullScreenExitHint("");
-		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.setMinWidth(1000);
+        stage.setWidth(1000);
+        stage.setMinHeight(800);
+        stage.setHeight(800);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
-		stage.show();
-	}
+        stage.show();
+    }
 
 }

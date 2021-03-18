@@ -4,23 +4,26 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Category {
 
-	@XmlElement(name="Category")
-	private String category;
+    @XmlAttribute(name="name")
+    private String name;
 
-	@XmlElement(name="Item")
-	private List<Item> items;
+    @XmlElementWrapper(name="TargetGroup")
+    @XmlElement(name="Target")
+    private List<Target> target;
 
-	public List<Item> getItems() {
-		return items;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public List<Target> getTarget() {
+        return target;
+    }
 
 }

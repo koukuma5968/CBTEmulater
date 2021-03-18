@@ -1,6 +1,9 @@
 package emulater.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -13,24 +16,37 @@ import emulater.layout.xml.XmlElementInterfarcee;
 
 public class JAXBUtil {
 
-	public static XmlElementInterfarcee getXMLReder(Class<? extends XmlElementInterfarcee> clazz, BufferedReader br) {
+    public static final String problemRoot = "prop/problem/";
 
-		XmlElementInterfarcee element = null;
+    public static XmlElementInterfarcee getXMLReder(Class<? extends XmlElementInterfarcee> clazz, BufferedReader br) {
 
-		try {
-			JAXBContext con = JAXBContext.newInstance(clazz);
-			Unmarshaller unMarshal = con.createUnmarshaller();
+        XmlElementInterfarcee element = null;
 
-			XMLInputFactory factory = XMLInputFactory.newInstance();
-			XMLStreamReader reader = factory.createXMLStreamReader(br);
+        try {
+            JAXBContext con = JAXBContext.newInstance(clazz);
+            Unmarshaller unMarshal = con.createUnmarshaller();
 
-			element = (XmlElementInterfarcee) unMarshal.unmarshal(reader);
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader reader = factory.createXMLStreamReader(br);
 
-		} catch (JAXBException | XMLStreamException e) {
-			e.printStackTrace();
-		}
+            element = (XmlElementInterfarcee) unMarshal.unmarshal(reader);
 
-		return element;
+        } catch (JAXBException | XMLStreamException e) {
+            e.printStackTrace();
+        }
 
-	}
+        return element;
+
+    }
+
+    public static Object getXmlObject(Class<? extends XmlElementInterfarcee> clazz, String filePath) {
+
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(filePath))) {
+            return JAXBUtil.getXMLReder(clazz, br);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }

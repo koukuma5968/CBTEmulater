@@ -9,15 +9,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import emulater.layout.xml.XmlElementInterfarcee;
 
-@XmlRootElement(name="Left")
+@XmlRootElement(name="Qualification")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class LeftViewItem implements XmlElementInterfarcee {
+public class Qualification implements XmlElementInterfarcee {
 
-    @XmlElement(name="Categorys")
-	private List<Category> Categorys;
+    @XmlElement(name="Category")
+    private List<Category> Category;
 
-    public List<Category> getCategorys() {
-		return Categorys;
-	}
+    public List<Category> getCategory() {
+        return Category;
+    }
 
 }

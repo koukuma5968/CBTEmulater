@@ -1,17 +1,105 @@
-/*メインビュー*/
-.accordion > .titled-pane > .title {
-	-fx-background-color : rgba(197, 195, 235, 0.5);
+/*アイテムビュー*/
+
+/* ChapterView */
+.chapter-view {
+  -fx-alignment: center;
+  -fx-padding: 10;
+  -fx-background-color : rgba(243, 243, 243, 1);
 }
-.itemview-pane .label {
-	-fx-label-padding:5;
-	-fx-alignment:top-left;
+
+.init-title {
+  -fx-alignment: center;
+  -fx-background-color : rgba(243, 243, 243, 1);
 }
-.accordion > .titled-pane > Text {
-	-fx-text-alignment:left;
-	-fx-border-style: solid ;
-	-fx-border-width: 2px;
-	-fx-border-color:rgba(132, 145, 196, 0.5);
-	-fx-wrap-text:true;
-	-fx-display-caret:false;
-	-fx-focus-traversable:false;
+
+/* CertificationItem */
+.cert-view {
+  -fx-padding:5 15;
+  -fx-alignment: center;
+  -fx-background-color : rgba(243, 243, 243, 1);
+  -fx-background-radius: 5;
+}
+
+.cert-view-title {
+  -fx-padding:10;
+  -fx-background-color : rgba(160, 216, 239, 1);
+  -fx-background-radius: 5 5 0 0;
+}
+
+.cert-grid {
+}
+
+.cert-head {
+  -fx-border-style: solid;
+  -fx-border-color: rgba(160, 216, 239, 1);
+  -fx-border-width: 1;
+}
+
+.cert-title {
+  -fx-padding: 5 10;
+  -fx-background-color : rgba(243, 243, 243, 1);
+  -fx-border-style: solid;
+  -fx-border-color: rgba(255, 255, 255, 1);
+  -fx-border-width: 0 0 1 0;
+}
+
+.cert-value {
+  -fx-padding: 5 10;
+  -fx-background-color : rgba(255, 255, 255, 1);
+}
+
+
+/* OrdinalItem */
+.ordinal-view {
+  -fx-alignment: top-left;
+  -fx-padding: 5 0;
+  -fx-background-color : rgba(243, 243, 243, 1);
+}
+
+.ordinal-grid {
+  -fx-padding:10;
+}
+
+.ordinal-title {
+  -fx-padding:10;
+/*   -fx-background-color : linear-gradient(to bottom right, rgba(160, 216, 239, 1) 0%, rgba(193, 228, 233, 0.5) 50%, rgba(160, 216, 239, 0.7) 90%); */
+  -fx-background-color : rgba(160, 216, 239, 1);
+  -fx-background-radius:  5 5 0 0;
+/*   -fx-effect: dropshadow(gaussian, rgba(160, 216, 239, 1), 5, 0, 2, 2); */
+}
+
+.ordinal-clauesGroup {
+  -fx-padding:10;
+  -fx-background-color :rgba(255, 255, 255, 1);
+  -fx-background-radius:  0 0 5 5;
+}
+
+.ordinal-value {
+  -fx-wrap-text:true;
+  -fx-text-alignment:left;
+/*  -fx-effect: dropshadow(gaussian, rgba(160, 216, 239, 1), 5, 0, 2, 2); */
+}
+
+.ordinal-head {
+  -fx-padding: 5;
+}
+
+
+.contents {
+  -fx-background-color : rgba(234, 150, 252, 1);
+}
+
+.itemview-box {
+  -fx-padding:10;
+  -fx-background-radius: 50;
+}
+
+.itemview-box > .titled-pane {
+  -fx-label-padding: 5;
+  -fx-text-alignment:left;
+  -fx-border-style: solid ;
+  -fx-border-color:rgba(234, 244, 252, 1);
+  -fx-wrap-text:true;
+  -fx-display-caret:false;
+  -fx-focus-traversable:false;
 }

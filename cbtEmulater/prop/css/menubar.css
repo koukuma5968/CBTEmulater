@@ -1,19 +1,24 @@
 /*メニューバー*/
-.emulater-pane {
-	-fx-alignment: top-right;
-	-fx-background-color : rgba(132, 145, 196, 0.5);
+.topmenu {
+  -fx-background-color : rgba(39, 146, 195, 1);
 }
 
-.emulater-pane > .close-button {
-    -fx-padding: 10;
-    -fx-spacing: 14;
-	-fx-background-color : rgba(132, 145, 196, 0);
-    borderpane-alignment: top-right;
+.topmenu .topmenu-bar {
+  -fx-background-color : linear-gradient(to bottom right, rgba(160, 216, 239, 1), rgba(137, 195, 235, 1));
 }
 
-.topmenu-bar .label
-{
-	-fx-label-padding:5 0 5 0;
+.topmenu .close-button,
+.topmenu .expansion-button,
+.topmenu .reduction-button {
+  -fx-background-color : rgba(39, 146, 195, 1);
+  -fx-text-fill: rgba(57, 63, 76, 1);
+  -fx-font-size: 18;
+}
+
+.topmenu .close-button:hover,
+.topmenu .expansion-button:hover,
+.topmenu .reduction-button:hover {
+  -fx-background-color : rgba(39, 100, 195, 1);
 }
 
 /**
@@ -31,7 +36,7 @@
 .menu-bar .label:focused
 {
     -fx-text-fill: #000000;
-	-fx-background-color : rgba(187, 200, 230, 1);
+  -fx-background-color : rgba(187, 200, 230, 1);
 }
 
 .menu-item,
@@ -48,6 +53,6 @@
 .menu-item .label:selected
 {
     -fx-text-fill: #FFFFFF;
-	-fx-background-color : rgba(135, 206, 250, 0.5);
+  -fx-background-color : rgba(135, 206, 250, 0.5);
 }
 */

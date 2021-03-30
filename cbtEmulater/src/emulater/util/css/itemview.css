@@ -1,0 +1,28 @@
+/*アイテムビュー*/
+
+/* CenterView */
+.center-pane {
+  -fx-alignment: center;
+  -fx-padding: 10;
+  -fx-background-color : rgba(243, 243, 243, 1);
+}
+
+.init-title {
+  -fx-alignment: center;
+  -fx-background-color : rgba(243, 243, 243, 1);
+}
+
+.itemview-box {
+  -fx-padding:10;
+  -fx-background-radius: 50;
+}
+
+.itemview-box > .titled-pane {
+  -fx-label-padding: 5;
+  -fx-text-alignment:left;
+  -fx-border-style: solid ;
+  -fx-border-color:rgba(234, 244, 252, 1);
+  -fx-wrap-text:true;
+  -fx-display-caret:false;
+  -fx-focus-traversable:false;
+}

@@ -1,0 +1,11 @@
+
+.exam-view {
+  -fx-padding: 10;
+  -fx-spacing: 10;
+}
+
+.exam-button {
+  -fx-padding:10;
+  -fx-label-padding: 10;
+  -fx-background-color : rgba(243, 243, 243, 1);
+}

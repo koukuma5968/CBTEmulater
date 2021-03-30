@@ -1,10 +1,7 @@
 package emulater.application;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import emulater.layout.EmulateBorder;
+import emulater.application.layout.EmulateBorder;
+import emulater.util.StyleUtil;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -27,11 +24,8 @@ public class EmulateStage extends Application {
         Scene scene = new Scene(pane);
         ObservableList<String> style = scene.getStylesheets();
         style.clear();
-        Path path = Paths.get("prop/css/");
-        File css = path.toFile().getAbsoluteFile();
-        for (File f : css.listFiles()) {
-            style.addAll(f.toURI().toString());
-        }
+
+        StyleUtil.setStylesheetFiles(scene);
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);

@@ -13,7 +13,7 @@ module cbtEmulater {
     requires java.xml.bind;
     requires javafx.base;
     requires java.desktop;
-    opens emulater.layout.xml.tree;
-    opens emulater.layout.xml.chapter;
-    opens emulater.layout.xml.problem;
+    opens emulater.xml.tree;
+    opens emulater.xml.chapter;
+    opens emulater.xml.problem;
 }

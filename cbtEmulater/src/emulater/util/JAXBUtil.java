@@ -12,15 +12,15 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import emulater.layout.xml.XmlElementInterfarcee;
+import emulater.xml.XmlElementInterface;
 
 public class JAXBUtil {
 
     public static final String problemRoot = "prop/problem/";
 
-    public static XmlElementInterfarcee getXMLReder(Class<? extends XmlElementInterfarcee> clazz, BufferedReader br) {
+    public static XmlElementInterface getXMLReder(Class<? extends XmlElementInterface> clazz, BufferedReader br) {
 
-        XmlElementInterfarcee element = null;
+        XmlElementInterface element = null;
 
         try {
             JAXBContext con = JAXBContext.newInstance(clazz);
@@ -29,7 +29,7 @@ public class JAXBUtil {
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader reader = factory.createXMLStreamReader(br);
 
-            element = (XmlElementInterfarcee) unMarshal.unmarshal(reader);
+            element = (XmlElementInterface) unMarshal.unmarshal(reader);
 
         } catch (JAXBException | XMLStreamException e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class JAXBUtil {
 
     }
 
-    public static Object getXmlObject(Class<? extends XmlElementInterfarcee> clazz, String filePath) {
+    public static Object getXmlObject(Class<? extends XmlElementInterface> clazz, String filePath) {
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filePath))) {
             return JAXBUtil.getXMLReder(clazz, br);

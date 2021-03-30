@@ -1,0 +1,35 @@
+
+.cert-view {
+  -fx-padding:5 15;
+  -fx-alignment: center;
+  -fx-background-color : rgba(243, 243, 243, 1);
+  -fx-background-radius: 5;
+}
+
+.cert-view-title {
+  -fx-padding:10;
+  -fx-background-color : rgba(160, 216, 239, 1);
+  -fx-background-radius: 5 5 0 0;
+}
+
+.cert-head {
+}
+
+.cert-item {
+  -fx-border-style: solid;
+  -fx-border-color: rgba(160, 216, 239, 1);
+  -fx-border-width: 1;
+}
+
+.cert-title {
+  -fx-padding: 5 10;
+  -fx-background-color : rgba(243, 243, 243, 1);
+  -fx-border-style: solid;
+  -fx-border-color: rgba(255, 255, 255, 1);
+  -fx-border-width: 0 0 1 0;
+}
+
+.cert-value {
+  -fx-padding: 5 10;
+  -fx-background-color : rgba(255, 255, 255, 1);
+}

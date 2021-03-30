@@ -1,0 +1,71 @@
+/*メニューバー*/
+.topmenu {
+  -fx-background-color : rgba(39, 146, 195, 1);
+}
+
+.topmenu .topmenu-bar {
+  -fx-background-color : linear-gradient(to bottom right, rgba(160, 216, 239, 1), rgba(137, 195, 235, 1));
+}
+
+.topmenu .close-button,
+.topmenu .expansion-button,
+.topmenu .reduction-button {
+  -fx-background-color : rgba(39, 146, 195, 1);
+  -fx-background-radius : 0;
+  -fx-text-fill: rgba(57, 63, 76, 1);
+  -fx-font-size: 18;
+  -fx-border-style: solid;
+  -fx-border-width: 0;
+}
+
+.topmenu .close-button:hover,
+.topmenu .expansion-button:hover,
+.topmenu .reduction-button:hover {
+  -fx-background-color : rgba(39, 100, 195, 1);
+  -fx-background-radius : 0;
+  -fx-border-style: solid;
+  -fx-border-width: 0;
+}
+
+/* 問題メニュー */
+.problem-menu {
+  -fx-background-color : rgba(39, 146, 195, 1);
+  -fx-padding:10 15;
+  -fx-font-size: 15;
+}
+
+/**
+.menu:even,
+.menu:hover,
+.menu:selected,
+.menu:focused,
+.menu-bar .menu-button:even,
+.menu-bar .menu-button:hover,
+.menu-bar .menu-button:selected,
+.menu-bar .menu-button:focused,
+.menu-bar .label:even,
+.menu-bar .label:hover,
+.menu-bar .label:selected,
+.menu-bar .label:focused
+{
+    -fx-text-fill: #000000;
+  -fx-background-color : rgba(187, 200, 230, 1);
+}
+
+.menu-item,
+.menu-item:even,
+.menu-item:hover,
+.menu-item:selected,
+.menu-item .menu-button,
+.menu-item .menu-button:even,
+.menu-item .menu-button:hover,
+.menu-item .menu-button:selected,
+.menu-item .label,
+.menu-item .label:even,
+.menu-item .label:hover,
+.menu-item .label:selected
+{
+    -fx-text-fill: #FFFFFF;
+  -fx-background-color : rgba(135, 206, 250, 0.5);
+}
+*/

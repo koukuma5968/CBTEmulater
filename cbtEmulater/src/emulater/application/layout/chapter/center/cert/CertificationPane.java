@@ -2,7 +2,7 @@ package emulater.application.layout.chapter.center.cert;
 
 import java.util.List;
 
-import emulater.application.names.CertificationItem;
+import emulater.application.names.chapter.CertificationItem;
 import emulater.xml.XmlElementInterface;
 import emulater.xml.chapter.Certification;
 import emulater.xml.chapter.Chapter;
@@ -41,7 +41,7 @@ public class CertificationPane extends BorderPane {
             item.getStyleClass().add(CertificationItem.CERT_ITEM.getStyleName());
 
             Label title = getContents(CertificationItem.ITEM_TITLE, cert.getCertType().getTitle());
-            Label value = getContents(CertificationItem.ITEM_VALUE, cert.getValue());
+            Label value = getContents(CertificationItem.ITEM_VALUE, cert.getValue() + cert.getCertType().getValue());
 
             item.getChildren().add(title);
             item.getChildren().add(value);

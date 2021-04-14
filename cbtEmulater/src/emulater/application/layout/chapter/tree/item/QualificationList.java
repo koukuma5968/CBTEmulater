@@ -1,11 +1,10 @@
 package emulater.application.layout.chapter.tree.item;
 
-import emulater.application.layout.EmulateBorder;
+import emulater.event.tree.QualificationEventHandler;
 import emulater.util.JAXBUtil;
 import emulater.xml.tree.Category;
 import emulater.xml.tree.Qualification;
 import emulater.xml.tree.Target;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -44,23 +43,9 @@ public class QualificationList extends TreeView<Label> {
         super.setRoot(root);
         super.setShowRoot(false);
 
-        super.setOnKeyPressed(event -> {
-
-            TreeItem<Label> item = super.getSelectionModel().getSelectedItem();
-
-            if (item instanceof TargetItem) {
-                switch(event.getCode()) {
-
-                case ENTER :
-                    Scene scene = ((QualificationList) event.getSource()).getScene();
-                    EmulateBorder parent = (EmulateBorder) scene.getRoot();
-                    parent.setItemView(((TargetItem) item).getPath());
-                    break;
-                default:
-                    break;
-                }
-            }
-        });
+        for (QualificationEventHandler handler : QualificationEventHandler.values()) {
+            super.addEventHandler(handler.getEventType(), handler.getEvent());
+        }
 
     }
 

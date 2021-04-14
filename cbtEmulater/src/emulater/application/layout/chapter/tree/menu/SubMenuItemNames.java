@@ -7,9 +7,9 @@ import emulater.event.storage.StorageEventHandler;
 
 public enum SubMenuItemNames {
 
-    STORAGE("storage-button", "試験成績", StorageEventHandler.values()),
-    EXAM("exam-button", "試験一覧", ExaminationEventHandler.values()),
-    NARRIVALS("arrivals-button", "新着問題", ArrivalsEventHandler.values());
+    STORAGE("storage-sub-button", "試験成績", StorageEventHandler.values()),
+    EXAM("exam-sub-button", "試験一覧", ExaminationEventHandler.values()),
+    NARRIVALS("arrivals-sub-button", "新着問題", ArrivalsEventHandler.values());
 
     private SubMenuItemNames(String styleName, String text, EventListener[] handler) {
         this.styleName = styleName;

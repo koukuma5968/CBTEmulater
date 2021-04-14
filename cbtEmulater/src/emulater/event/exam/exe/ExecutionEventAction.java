@@ -1,12 +1,11 @@
 package emulater.event.exam.exe;
 
-import emulater.application.layout.problem.ProblemView;
+import emulater.application.EmulateStage;
+import emulater.application.layout.chapter.center.exam.ExecutionBox;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCombination;
-import javafx.stage.Stage;
 
 public class ExecutionEventAction extends Service<Boolean> {
 
@@ -24,24 +23,14 @@ public class ExecutionEventAction extends Service<Boolean> {
             @Override
             protected Boolean call() throws Exception {
 
-                start();
+                ExecutionBox exe = (ExecutionBox) event.getSource();
+
+                Platform.runLater(()-> {
+                    EmulateStage preStage = new EmulateStage();
+                    preStage.problemStart(exe);
+                });
 
                 return Boolean.TRUE;
-
-            }
-
-            private void start() {
-
-                ProblemView pane = new ProblemView();
-
-                Scene scene = new Scene(pane);
-
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setFullScreen(true);
-                stage.setFullScreenExitHint("");
-                stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-                stage.showAndWait();
 
             }
 

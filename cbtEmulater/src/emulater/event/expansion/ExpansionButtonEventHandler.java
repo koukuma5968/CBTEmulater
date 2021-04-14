@@ -23,14 +23,15 @@ public enum ExpansionButtonEventHandler implements EventListener {
 
     };
 
-    ExpansionButtonEventHandler(EventType<? extends Event> event) {
-        // TODO 自動生成されたコンストラクター・スタブ
+    ExpansionButtonEventHandler(EventType<? extends Event> type) {
+        this.type = type;
     }
+
+    private EventType<? extends Event> type;
 
     @Override
     public EventType<? extends Event> getEventType() {
-        // TODO 自動生成されたメソッド・スタブ
-        return null;
+        return this.type;
     }
 
 }

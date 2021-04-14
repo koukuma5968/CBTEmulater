@@ -1,10 +1,12 @@
 package emulater.application.layout.chapter.center.exam;
 
-import emulater.application.names.Examinationtem;
+import emulater.application.names.chapter.Examinationtem;
 import emulater.event.EventListener;
 import emulater.event.exam.exe.ExecutionEventHandler;
-import emulater.xml.chapter.Examination;
-import javafx.scene.control.Button;
+import emulater.xml.chapter.CertType;
+import emulater.xml.chapter.Chapter;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class ExaminationPane extends HBox {
@@ -14,20 +16,34 @@ public class ExaminationPane extends HBox {
         super.getStyleClass().add(Examinationtem.VIEW_TITLE.getStyleName());
     }
 
-    public void setLayout(Examination exam) {
+    public void setLayout(String path, Chapter chapter) {
 
-        exam.getExecution().forEach(exe -> {
+        chapter.getExamination().getExecution().forEach(exe -> {
 
-            Button button = new Button();
-            button.getStyleClass().add(Examinationtem.ITEM_VALUE.getStyleName());
-            button.setText(exe.getTitle());
+            ImageView itemView = new ImageView();
+            itemView.getStyleClass().add(Examinationtem.IMAGE_BUTTON.getStyleName());
+
+            Label itemLabel = new Label();
+            itemLabel.setText(exe.getTitle());
+            itemLabel.getStyleClass().add(Examinationtem.ITEM_VALUE.getStyleName());
+
+            ExecutionBox box = new ExecutionBox();
+            box.getStyleClass().add(Examinationtem.BUTTON_ITEM.getStyleName());
+            box.setPath("prop/problem/" + path + "/chapter/" + exe.getPath());
+            box.setExplanatory(chapter.getExplanatory());
+            chapter.getCertification().stream().filter(cert -> CertType.NAME==cert.getCertType()).forEach(name -> box.setName(name.getValue()));
+            chapter.getCertification().stream().filter(cert -> CertType.TIME==cert.getCertType()).forEach(time -> box.setTime(time.getValue()));
+            chapter.getCertification().stream().filter(cert -> CertType.QNUMBER==cert.getCertType()).forEach(number -> box.setNumber(number.getValue()));
+            chapter.getCertification().stream().filter(cert -> CertType.PASSLINE==cert.getCertType()).forEach(passline -> box.setPassLine(passline.getValue()));
+
+            box.getChildren().add(itemView);
+            box.getChildren().add(itemLabel);
 
             for (EventListener event : ExecutionEventHandler.values()) {
-                button.addEventHandler(event.getEventType(), event.getEvent());
+                box.addEventHandler(event.getEventType(), event.getEvent());
             }
 
-            super.getChildren().add(button);
-
+            super.getChildren().add(box);
         });
     }
 

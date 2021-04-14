@@ -3,9 +3,9 @@ package emulater.application.layout.chapter.tree.menu;
 import emulater.event.EventListener;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-public class SubMenuItem extends HBox {
+public class SubMenuItem extends VBox {
 
     public SubMenuItem() {
         super.getStyleClass().add("submenu-item");

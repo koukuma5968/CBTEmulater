@@ -2,7 +2,7 @@ package emulater.application.layout.chapter.center.ordinal;
 
 import java.util.List;
 
-import emulater.application.names.OrdinalItem;
+import emulater.application.names.chapter.OrdinalItem;
 import emulater.xml.chapter.Ordinal;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -49,7 +49,7 @@ public class OrdinalPane extends VBox {
             GridPane.setHgrow(head, Priority.ALWAYS);
             GridPane.setVgrow(head, Priority.ALWAYS);
 
-            GridPane.setConstraints(head, (ordinal.getNumber()-1)%3, (ordinal.getNumber()-1)/3);
+            GridPane.setConstraints(head, (ordinal.getNumber()-1)%4, (ordinal.getNumber()-1)/4);
             grid.getChildren().add(head);
 
         });

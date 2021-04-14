@@ -1,6 +1,7 @@
 package emulater.util;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -47,10 +48,10 @@ public class RequestCipher {
 
             Cipher cip = Cipher.getInstance(ALGORITHM);
             cip.init(Cipher.DECRYPT_MODE, key, iv);
-            byte[] byteToken = Base64.getDecoder().decode(text);
+            byte[] byteToken = Base64.getDecoder().decode(URLDecoder.decode(text, "UTF-8"));
             dec = new String(cip.doFinal(byteToken));
 
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return dec;

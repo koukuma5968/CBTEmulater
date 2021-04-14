@@ -1,10 +1,12 @@
 package emulater.event.stage;
 
-import emulater.application.layout.menu.TopMenuPane;
+import emulater.application.layout.menu.right.ExpansionButton;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 public class FullScreenEventAction extends Service<Boolean> {
@@ -23,20 +25,19 @@ public class FullScreenEventAction extends Service<Boolean> {
             @Override
             protected Boolean call() throws Exception {
 
-                Stage stage = (Stage) ((TopMenuPane) event.getSource()).getScene().getWindow();
-
-                if (event.getClickCount() == 2) {
-                    if (stage.isFullScreen()) {
-                        stage.setFullScreen(false);
-                    } else {
-                        stage.setFullScreen(true);
-                    }
+                if (event.getSource() instanceof ExpansionButton || event.getClickCount() == 2) {
+                    screenChange();
                 }
 
                 return Boolean.TRUE;
             }
 
+            private void screenChange() {
+                Stage stage = (Stage) ((Region) event.getSource()).getScene().getWindow();
+                Platform.runLater(()-> stage.setFullScreen(stage.isFullScreen() ? false:true));
+            }
         };
+
     }
 
 }

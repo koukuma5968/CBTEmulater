@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import emulater.xml.XmlElementInterface;
@@ -28,6 +29,10 @@ public class Chapter implements XmlElementInterface {
 
     @XmlElement(name="Certification")
     private List<Certification> certification;
+
+    @XmlElementWrapper(name="Explanatory")
+    @XmlElement(name="Text")
+    private List<String> explanatory;
 
     @XmlElement(name="Examination")
     private Examination examination;
@@ -53,6 +58,10 @@ public class Chapter implements XmlElementInterface {
 
     public List<Certification> getCertification() {
         return certification;
+    }
+
+    public List<String> getExplanatory() {
+        return explanatory;
     }
 
     public Examination getExamination() {

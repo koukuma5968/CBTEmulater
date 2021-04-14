@@ -1,7 +1,8 @@
 package emulater.application.layout.menu.right;
 
+import emulater.event.EventListener;
+import emulater.event.expansion.ExpansionButtonEventHandler;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 public class ExpansionButton extends Button {
 
@@ -14,14 +15,9 @@ public class ExpansionButton extends Button {
 
         super.setText("□");
         super.getStyleClass().add("expansion-button");
-        super.setOnMouseClicked(event -> {
 
-            Stage stage = (Stage) ((ExpansionButton) event.getSource()).getScene().getWindow();
-            if (stage.isFullScreen()) {
-                stage.setFullScreen(false);
-            } else {
-                stage.setFullScreen(true);
-            }
-        });
+        for (EventListener event : ExpansionButtonEventHandler.values()) {
+            super.addEventHandler(event.getEventType(), event.getEvent());
+        }
     }
 }

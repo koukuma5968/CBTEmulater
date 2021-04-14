@@ -1,4 +1,4 @@
-package emulater.application.names;
+package emulater.application.names.chapter;
 
 public enum CertificationItem {
 

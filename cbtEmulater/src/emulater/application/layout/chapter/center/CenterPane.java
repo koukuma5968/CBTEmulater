@@ -33,7 +33,7 @@ public class CenterPane extends VBox {
         super.getChildren().add(ordinal);
 
         ExaminationPane exam = new ExaminationPane();
-        exam.setLayout(chapter.getExamination());
+        exam.setLayout(path, chapter);
         super.getChildren().add(exam);
     }
 

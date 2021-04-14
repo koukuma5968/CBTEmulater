@@ -8,10 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
-import emulater.xml.XmlElementInterface;
-
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Question implements XmlElementInterface {
+public class Question {
 
     @XmlAttribute(name="id")
     private String id;
@@ -27,6 +25,9 @@ public class Question implements XmlElementInterface {
 
     @XmlElement(name="Answer")
     private List<Answer> answer;
+
+    @XmlElement(name="Solution")
+    private String solution;
 
     public String getId() {
         return id;
@@ -73,6 +74,14 @@ public class Question implements XmlElementInterface {
             this.answer = new ArrayList<Answer>();
         }
         this.answer.add(answer);
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 
 }

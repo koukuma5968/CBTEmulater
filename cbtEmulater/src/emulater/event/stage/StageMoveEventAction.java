@@ -1,6 +1,6 @@
 package emulater.event.stage;
 
-import emulater.application.layout.menu.TopMenuPane;
+import emulater.application.layout.selection.menu.TopMenuPane;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;

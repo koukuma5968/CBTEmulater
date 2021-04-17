@@ -1,12 +1,12 @@
 package emulater.application.names.problem;
 
-public enum ProblemItem {
+public enum TerminationItem {
 
-    VIEW_TITLE("problem-view"),
-    MENU_VIEW("problem-menu"),
-    MENU_BOX("problem-menu-box");
+    VIEW("term-view"),
+    IMAGE("term-image"),
+    LABEL("term-label");
 
-    private ProblemItem(String styleName) {
+    private TerminationItem(String styleName) {
         this.styleName = styleName;
     }
 

@@ -1,9 +1,9 @@
 package emulater.event.exam;
 
-import emulater.application.layout.EmulateBorder;
-import emulater.application.layout.chapter.tree.LeftPane;
-import emulater.application.layout.chapter.tree.item.QualificationList;
-import emulater.application.layout.chapter.tree.menu.SubMenuItem;
+import emulater.application.layout.selection.SelectionView;
+import emulater.application.layout.selection.chapter.tree.LeftPane;
+import emulater.application.layout.selection.chapter.tree.item.QualificationList;
+import emulater.application.layout.selection.chapter.tree.menu.SubMenuItem;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -25,7 +25,7 @@ public class ExaminationEventAction extends Service<Boolean> {
             @Override
             protected Boolean call() throws Exception {
 
-                LeftPane left = (LeftPane) ((EmulateBorder) ((SubMenuItem) event.getSource()).getScene().getRoot()).getLeft();
+                LeftPane left = (LeftPane) ((SelectionView) ((SubMenuItem) event.getSource()).getScene().getRoot()).getLeft();
                 QualificationList qua = (QualificationList) left.getCenter();
 
                 Platform.runLater(() -> qua.setCategory());

@@ -1,15 +1,15 @@
-package emulater.event.exam.exe;
+package emulater.event.problem.term;
 
 import emulater.application.EmulateStage;
-import emulater.application.layout.selection.chapter.center.exam.ExecutionBox;
+import emulater.application.layout.problem.top.TerminationButton;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 
-public class ExecutionEventAction extends Service<Boolean> {
+public class TerminationEventAction extends Service<Boolean> {
 
-    public ExecutionEventAction(Event event) {
+    public TerminationEventAction(Event event) {
         this.event = event;
     }
 
@@ -23,11 +23,11 @@ public class ExecutionEventAction extends Service<Boolean> {
             @Override
             protected Boolean call() throws Exception {
 
-                ExecutionBox exe = (ExecutionBox) event.getSource();
+                TerminationButton term = (TerminationButton) event.getSource();
 
                 Platform.runLater(()-> {
                     EmulateStage preStage = new EmulateStage();
-                    preStage.problemStart(exe);
+                    preStage.reStart(term);
                 });
 
                 return Boolean.TRUE;

@@ -1,8 +1,8 @@
 package emulater.event.tree;
 
-import emulater.application.layout.EmulateBorder;
-import emulater.application.layout.chapter.tree.item.QualificationList;
-import emulater.application.layout.chapter.tree.item.TargetItem;
+import emulater.application.layout.selection.SelectionView;
+import emulater.application.layout.selection.chapter.tree.item.QualificationList;
+import emulater.application.layout.selection.chapter.tree.item.TargetItem;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -57,7 +57,7 @@ public class QualificationEventAction extends Service<Boolean> {
 
         Platform.runLater(() -> {
             Scene scene = ((QualificationList) event.getSource()).getScene();
-            EmulateBorder parent = (EmulateBorder) scene.getRoot();
+            SelectionView parent = (SelectionView) scene.getRoot();
             parent.setItemView(item.getPath());
         });
 

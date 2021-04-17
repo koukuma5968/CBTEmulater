@@ -5,6 +5,7 @@ import java.net.URL;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class StyleUtil {
 
@@ -22,5 +23,9 @@ public class StyleUtil {
         for (File f : css.listFiles()) {
             style.addAll(f.toURI().toString());
         }
+    }
+
+    public static Image getSystemIcon() {
+        return new Image(StyleUtil.class.getResourceAsStream("icon/favicon.png"));
     }
 }

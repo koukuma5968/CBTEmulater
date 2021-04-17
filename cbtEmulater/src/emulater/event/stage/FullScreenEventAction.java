@@ -1,6 +1,6 @@
 package emulater.event.stage;
 
-import emulater.application.layout.menu.right.ExpansionButton;
+import emulater.application.layout.selection.menu.right.ExpansionButton;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;

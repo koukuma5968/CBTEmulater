@@ -1,15 +1,26 @@
 /*メインビュー*/
-.emulater-pane {
+.selection-pane {
   -fx-alignment: top-right;
 }
 
 /*メニューバー*/
 .topmenu {
   -fx-background-color : rgba(39, 146, 195, 1);
+  -fx-alignment: center;
 }
 
-.topmenu .topmenu-bar {
-  -fx-background-color : linear-gradient(to bottom right, rgba(160, 216, 239, 1), rgba(137, 195, 235, 1));
+.topmenu-title {
+  -fx-alignment: center;
+  -fx-padding: 0 10;
+  -fx-font-size: 15;
+}
+
+.topmenu-title-image {
+  -fx-image : url("../icon/title.png");
+}
+
+.topmenu-title-text {
+  -fx-padding: 0 10;
 }
 
 .topmenu .close-button,
@@ -26,7 +37,8 @@
 .topmenu .close-button:hover,
 .topmenu .expansion-button:hover,
 .topmenu .reduction-button:hover {
-  -fx-background-color : rgba(39, 100, 195, 1);
+  -fx-background-color: rgba(160, 216, 239, 1);
+  -fx-cursor:hand;
   -fx-background-radius : 0;
   -fx-border-style: solid;
   -fx-border-width: 0;
@@ -176,7 +188,8 @@
 }
 
 .submenu-item {
-  -fx-padding:5 15;
+  -fx-alignment: center;
+  -fx-padding: 5 15;
   -fx-background-color : rgba(15, 35, 80, 1);
 }
 
@@ -191,7 +204,8 @@
 
 .sub-text {
   -fx-padding:5 0;
-  -fx-font-size:10;
+  -fx-alignment: center;
+  -fx-font-size:12;
   -fx-text-fill : rgba(255, 255, 255, 1);
 }
 
@@ -257,6 +271,11 @@
 .problem-menu {
   -fx-alignment: center-right;
   -fx-background-color : rgba(234, 244, 252, 1);
+  -fx-font-size: 30;
+}
+
+.problem-menu-box {
+  -fx-alignment: center-right;
 }
 
 .question-view {
@@ -301,6 +320,7 @@
 .run_box:hover {
   -fx-cursor:hand;
 }
+
 .question-image {
   -fx-image : url("../icon/question-black.png");
 }
@@ -311,11 +331,41 @@
 }
 
 .question-cert-name {
-  -fx-font-size: 13;
-  -fx-padding: 20;
+  -fx-alignment: center-left;
+  -fx-font-size: 18;
+  -fx-padding: 15;
 }
 
 .time-view {
+  -fx-alignment: center-left;
+  -fx-font-size: 18;
+  -fx-padding: 15;
+}
+
+.term-view {
   -fx-font-size: 13;
-  -fx-padding: 20;
+  -fx-alignment: center;
+  -fx-background-color : rgba(160, 216, 239, 1);
+  -fx-max-width: 200;
+  -fx-max-height: 20;
+  -fx-padding: 10;
+  -fx-background-radius : 10;
+  -fx-border-style: solid;
+  -fx-border-color: rgba(15, 35, 80, 1);
+  -fx-border-width: 2;
+  -fx-border-radius : 9;
+}
+
+.term-view:hover {
+  -fx-cursor:hand;
+}
+
+.term-image {
+  -fx-image : url("../icon/Termination_black.png");
+  -fx-padding: 0 10;
+  -fx-alignment: center;
+}
+
+.term-label {
+  -fx-padding: 0 10;
 }

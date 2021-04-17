@@ -1,10 +1,10 @@
 package emulater.application.layout.problem.top;
 
-import emulater.application.layout.chapter.center.exam.ExecutionBox;
+import emulater.application.layout.selection.chapter.center.exam.ExecutionBox;
 import emulater.application.names.problem.ProblemItem;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.AnchorPane;
 
-public class ProblemMenu extends HBox {
+public class ProblemMenu extends AnchorPane {
 
     public ProblemMenu() {
         super();
@@ -16,12 +16,24 @@ public class ProblemMenu extends HBox {
         CertificationName certName = new CertificationName();
         certName.setCertName(exe.getName());
 
+        super.setLeftAnchor(certName, 0d);
         super.getChildren().add(certName);
 
         TimerPane timer = new TimerPane();
         timer.setCounter(exe.getTime());
 
+        super.setRightAnchor(timer, 300d);
+        super.setTopAnchor(timer, 0d);
+        super.setBottomAnchor(timer, 0d);
         super.getChildren().add(timer);
+
+        TerminationButton termination = new TerminationButton();
+        termination.setButton();
+
+        super.setRightAnchor(termination, 0d);
+        super.setTopAnchor(termination, 10d);
+        super.setBottomAnchor(termination, 10d);
+        super.getChildren().add(termination);
 
     }
 }

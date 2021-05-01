@@ -1,6 +1,8 @@
-package emulater.application.layout.problem.center;
+package emulater.application.layout.problem.bottom;
 
 import emulater.application.names.problem.QuestionItem;
+import emulater.event.EventListener;
+import emulater.event.problem.question.QuestionStartEventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -37,5 +39,9 @@ public class StartLabelBox extends VBox {
         box.getChildren().add(start);
 
         super.getChildren().add(box);
+
+        for (EventListener handler : QuestionStartEventHandler.values()) {
+            super.addEventHandler(handler.getEventType(), handler.getEvent());
+        }
     }
 }

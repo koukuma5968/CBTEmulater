@@ -1,6 +1,8 @@
 package emulater.application;
 
+import emulater.application.layout.grad.center.ReviewPane;
 import emulater.application.layout.problem.ProblemView;
+import emulater.application.layout.problem.center.QuestionPane;
 import emulater.application.layout.problem.top.TerminationButton;
 import emulater.application.layout.selection.SelectionView;
 import emulater.application.layout.selection.chapter.center.exam.ExecutionBox;
@@ -17,6 +19,8 @@ public class EmulateStage extends Application {
     public EmulateStage() {
         super();
     }
+
+    private static Stage gradingStage = null;
 
     @SuppressWarnings("exports")
     @Override
@@ -54,7 +58,7 @@ public class EmulateStage extends Application {
 
         Stage stage = (Stage) scene.getWindow();
         stage.setScene(scene);
-        stage.setFullScreen(true);
+//        stage.setFullScreen(true);
 //        stage.setFullScreenExitHint("");
 //        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.show();
@@ -73,5 +77,39 @@ public class EmulateStage extends Application {
         stage.setFullScreen(false);
         stage.show();
 
+    }
+
+    @SuppressWarnings("exports")
+    public void showReview(QuestionPane que) {
+
+        ReviewPane review = new ReviewPane();
+        review.setReview(que);
+
+        Scene scene = new Scene(review);
+        ObservableList<String> style = scene.getStylesheets();
+        style.clear();
+
+        StyleUtil.setStylesheetFiles(scene);
+
+        gradingStage = new Stage();
+        gradingStage.setScene(scene);
+        gradingStage.initStyle(StageStyle.UNDECORATED);
+        gradingStage.getIcons().add(StyleUtil.getSystemIcon());
+        gradingStage.setWidth(1000);
+        gradingStage.setHeight(800);
+        gradingStage.setFullScreenExitHint("");
+        gradingStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+
+        gradingStage.show();
+
+    }
+
+    public static boolean checkShowStage() {
+        return gradingStage == null;
+    }
+
+    public static void closeReview() {
+        gradingStage.close();
+        gradingStage = null;
     }
 }

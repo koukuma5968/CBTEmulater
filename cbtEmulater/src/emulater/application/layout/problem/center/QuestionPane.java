@@ -2,19 +2,22 @@ package emulater.application.layout.problem.center;
 
 import java.util.List;
 
+import emulater.application.names.problem.CheckAnswerBean;
 import emulater.application.names.problem.QuestionItem;
 import emulater.util.RequestCipher;
-import emulater.xml.problem.Answer;
 import emulater.xml.problem.Question;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
 
-public class QuestionPane extends GridPane {
+public class QuestionPane extends BorderPane {
 
-    public QuestionPane() {
+    private String solution = null;
+
+    public QuestionPane(QuestionItem style) {
         super();
-        super.getStyleClass().add(QuestionItem.VIEW_TITLE.getStyleName());
+        super.getStyleClass().add(style.getStyleName());
     }
 
     public void initLayout(List<String> list) {
@@ -22,59 +25,66 @@ public class QuestionPane extends GridPane {
         ExplanBox explan = new ExplanBox();
         explan.setExplanText(list);
 
-        GridPane.setConstraints(explan, 0, 0);
-        super.getChildren().add(explan);
-
-        StartLabelBox startBox = new StartLabelBox();
-        startBox.setRunBox();
-
-        GridPane.setConstraints(startBox, 0, 1);
-        super.getChildren().add(startBox);
+        super.setCenter(explan);
 
     }
 
-    public void serLayout(Question question) {
+    public void setQuestion(int index, Question question) {
 
-        int count = 0;
+        Label number = new Label();
+        number.getStyleClass().add(QuestionItem.QUEST_NUM.getStyleName());
+        number.setText("問" + (index + 1));
 
-        Label id = new Label();
-        id.setText(RequestCipher.decode(question.getId()));
-        GridPane.setConstraints(id, 0, count++);
-        super.getChildren().add(id);
+        super.setTop(number);
 
-        Label statement = new Label();
-        statement.setText(RequestCipher.decode(question.getStatement()));
-        GridPane.setConstraints(statement, 0, count++);
-        super.getChildren().add(statement);
+        QuestionItemBox box = new QuestionItemBox();
+        box.setIrem(question);
 
-        Label code = new Label();
-        code.setText(RequestCipher.decode(question.getCode()));
-        GridPane.setConstraints(code, 0, count++);
-        super.getChildren().add(code);
+        ScrollPane sc = new ScrollPane();
+        sc.setContent(box);
+        sc.setFitToHeight(true);
+        sc.setFitToWidth(true);
 
-        Label selection = new Label();
-        selection.setText(RequestCipher.decode(question.getSelections()));
-        GridPane.setConstraints(selection, 0, count++);
-        super.getChildren().add(selection);
+        super.setCenter(sc);
 
-        for (Answer ans : question.getAnswer()) {
-            Label aid = new Label();
-            aid.setText(RequestCipher.decode(ans.getId()));
+        solution = RequestCipher.decode(question.getSolution());
 
-            Label avalue = new Label();
-            avalue.setText(RequestCipher.decode(ans.getValue()));
+        SolutionSelectBox solution = new SolutionSelectBox();
+        solution.setSelectBox(question);
 
-            HBox answer = new HBox();
-            answer.getChildren().add(aid);
-            answer.getChildren().add(avalue);
+        super.setBottom(solution);
 
-            GridPane.setConstraints(answer, 0, count++);
-            super.getChildren().add(answer);
+    }
+
+    public CheckAnswerBean getCheckAnswer() {
+
+        CheckAnswerBean bean = new CheckAnswerBean();
+
+        bean.setNumber(((Label) super.getTop()).getText());
+        bean.setSolution(this.solution);
+
+        SolutionSelectBox select = (SolutionSelectBox) super.getBottom();
+
+        StringBuilder userSel = new StringBuilder();
+
+        select.getChildren().forEach(node -> {
+
+            CheckBox check = (CheckBox) node;
+            if (check.isSelected()) {
+                userSel.append(check.getText());
+                userSel.append(",");
+
+            }
+
+        });
+
+        if (userSel.length() != 0) {
+            userSel.deleteCharAt(userSel.length() - 1);
         }
 
-        Label solution = new Label();
-        solution.setText(RequestCipher.decode(question.getSolution()));
-        GridPane.setConstraints(solution, 0, count++);
-        super.getChildren().add(solution);
+        bean.setCorrection(this.solution.equals(userSel.toString()));
+        bean.setUserSel(userSel.toString());
+
+        return bean;
     }
 }

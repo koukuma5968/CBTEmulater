@@ -16,4 +16,5 @@ module cbtEmulater {
     opens emulater.xml.tree;
     opens emulater.xml.chapter;
     opens emulater.xml.problem;
+    opens emulater.application.names.problem;
 }

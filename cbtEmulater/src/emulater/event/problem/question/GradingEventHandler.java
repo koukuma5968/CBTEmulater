@@ -7,12 +7,12 @@ import javafx.event.EventType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public enum QuestionStartEventHandler implements EventListener {
+public enum GradingEventHandler implements EventListener {
 
     KEY_PRES(KeyEvent.KEY_PRESSED),
     MOUSE_CLICK(MouseEvent.MOUSE_CLICKED);
 
-    private QuestionStartEventHandler(EventType<? extends Event> type) {
+    private GradingEventHandler(EventType<? extends Event> type) {
         this.type = type;
     }
 
@@ -27,7 +27,7 @@ public enum QuestionStartEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            QuestionStartEventAction action = new QuestionStartEventAction(event);
+            GradingEventAction action = new GradingEventAction(event);
             action.start();
         });
 

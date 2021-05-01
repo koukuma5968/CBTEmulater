@@ -2,9 +2,19 @@ package emulater.application.names.problem;
 
 public enum QuestionItem {
 
+    VIEW_TITLE_INI("question-view-init"),
     VIEW_TITLE("question-view"),
+    QUEST_NUM("question-number"),
+    QUEST_BOX("question-box"),
+    STATEMENT("question-statement"),
+    CODE("question-code"),
+    CODE_FIELD("question-code-field"),
+    ANS("answer"),
+    ANS_BOX("answer-box"),
+    SOLUTION("solution"),
+    SOLUTION_CHECK("solution-check"),
     EXPLAN_BOX("explanatory-box"),
-    TEXT("explanatory-text"),
+    EXPLAN_TEXT("explanatory-text"),
     START_BOX("start-box"),
     START_TEXT("start-text"),
     RUN_BOX("run_box"),

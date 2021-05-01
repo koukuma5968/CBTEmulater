@@ -1,18 +1,16 @@
-package emulater.event.problem.question;
+package emulater.event.review;
 
 import emulater.event.EventListener;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public enum QuestionStartEventHandler implements EventListener {
+public enum CloseReviewEventHandler implements EventListener {
 
-    KEY_PRES(KeyEvent.KEY_PRESSED),
     MOUSE_CLICK(MouseEvent.MOUSE_CLICKED);
 
-    private QuestionStartEventHandler(EventType<? extends Event> type) {
+    private CloseReviewEventHandler(EventType<? extends Event> type) {
         this.type = type;
     }
 
@@ -27,10 +25,11 @@ public enum QuestionStartEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            QuestionStartEventAction action = new QuestionStartEventAction(event);
+            CloseReviewEventAction action = new CloseReviewEventAction(event);
             action.start();
         });
 
         return handler;
     }
+
 }

@@ -18,10 +18,10 @@ public class ExplanBox extends VBox {
 
         list.stream().forEach(explan -> {
             Text text = new Text();
-            text.getStyleClass().add(QuestionItem.TEXT.getStyleName());
+            text.getStyleClass().add(QuestionItem.EXPLAN_TEXT.getStyleName());
             text.setText(explan);
-            super.getChildren().add(text);
             super.setMargin(text, new Insets(10, 5, 10, 5));
+            super.getChildren().add(text);
         });
 
     }

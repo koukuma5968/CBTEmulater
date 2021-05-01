@@ -1,10 +1,10 @@
 package emulater.event.stage;
 
-import emulater.application.layout.selection.menu.TopMenuPane;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class StageMoveEventAction extends Service<Boolean> {
@@ -26,7 +26,7 @@ public class StageMoveEventAction extends Service<Boolean> {
             @Override
             protected Boolean call() throws Exception {
 
-                Stage stage = (Stage) ((TopMenuPane) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Pane) event.getSource()).getScene().getWindow();
 
                 if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
 

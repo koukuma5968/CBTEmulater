@@ -27,7 +27,8 @@ public enum QuestionStartEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            QuestionStartEventAction action = new QuestionStartEventAction(event);
+            QuestionStartEventAction action = new QuestionStartEventAction();
+            action.setEvent(event);
             action.start();
         });
 

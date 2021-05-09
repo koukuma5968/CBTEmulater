@@ -2,39 +2,21 @@ package emulater.event.problem.term;
 
 import emulater.application.EmulateStage;
 import emulater.application.layout.problem.top.TerminationButton;
+import emulater.event.EventActionService;
 import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.event.Event;
 
-public class TerminationEventAction extends Service<Boolean> {
-
-    public TerminationEventAction(Event event) {
-        this.event = event;
-    }
-
-    private Event event;
+public class TerminationEventAction extends EventActionService {
 
     @Override
-    protected Task<Boolean> createTask() {
+    protected void doEvent() {
 
-        return new Task<Boolean>() {
+        TerminationButton term = (TerminationButton) super.getEvent().getSource();
 
-            @Override
-            protected Boolean call() throws Exception {
+        Platform.runLater(()-> {
+            EmulateStage preStage = new EmulateStage();
+            preStage.reStart(term);
+        });
 
-                TerminationButton term = (TerminationButton) event.getSource();
-
-                Platform.runLater(()-> {
-                    EmulateStage preStage = new EmulateStage();
-                    preStage.reStart(term);
-                });
-
-                return Boolean.TRUE;
-
-            }
-
-        };
     }
 
 }

@@ -27,7 +27,8 @@ public enum ExecutionEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            ExecutionEventAction action = new ExecutionEventAction(event);
+            ExecutionEventAction action = new ExecutionEventAction();
+            action.setEvent(event);
             action.start();
         });
 

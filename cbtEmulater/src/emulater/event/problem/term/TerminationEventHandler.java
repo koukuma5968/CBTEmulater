@@ -27,7 +27,8 @@ public enum TerminationEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            TerminationEventAction action = new TerminationEventAction(event);
+            TerminationEventAction action = new TerminationEventAction();
+            action.setEvent(event);
             action.start();
         });
 

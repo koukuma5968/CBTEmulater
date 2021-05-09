@@ -15,7 +15,8 @@ public enum ExpansionButtonEventHandler implements EventListener {
         public EventHandler<Event> getEvent() {
 
             EventHandler<Event> handler = (event-> {
-                FullScreenEventAction action = new FullScreenEventAction(event);
+                FullScreenEventAction action = new FullScreenEventAction();
+                action.setEvent(event);
                 action.start();
             });
             return handler;

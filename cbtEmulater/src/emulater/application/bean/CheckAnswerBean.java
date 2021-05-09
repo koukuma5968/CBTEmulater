@@ -1,11 +1,11 @@
-package emulater.application.names.problem;
+package emulater.application.bean;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class CheckAnswerBean {
 
-     private StringProperty number = new SimpleStringProperty();
+    private StringProperty number = new SimpleStringProperty();
 
     private StringProperty solution = new SimpleStringProperty();
 
@@ -18,7 +18,7 @@ public class CheckAnswerBean {
     }
 
     public void setNumber(String number) {
-        this.number.set(number);
+        this.number.setValue(number);
     }
 
     public String getSolution() {
@@ -26,7 +26,7 @@ public class CheckAnswerBean {
     }
 
     public void setSolution(String solution) {
-        this.solution.set(solution);
+        this.solution.setValue(solution);
     }
 
     public String getUserSel() {
@@ -34,15 +34,15 @@ public class CheckAnswerBean {
     }
 
     public void setUserSel(String userSel) {
-        this.userSel.set(userSel);
+        this.userSel.setValue(userSel);
     }
 
     public String getCorrection() {
         return correction.get();
     }
 
-    public void setCorrection(boolean correction) {
-        this.correction.setValue(correction ? "〇" : "×");
+    public void setCorrection(String correction) {
+        this.correction.setValue(correction);
     }
 
 }

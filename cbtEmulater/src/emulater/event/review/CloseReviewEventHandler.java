@@ -25,7 +25,8 @@ public enum CloseReviewEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            CloseReviewEventAction action = new CloseReviewEventAction(event);
+            CloseReviewEventAction action = new CloseReviewEventAction();
+            action.setEvent(event);
             action.start();
         });
 

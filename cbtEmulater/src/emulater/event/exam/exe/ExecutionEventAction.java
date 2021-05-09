@@ -2,39 +2,21 @@ package emulater.event.exam.exe;
 
 import emulater.application.EmulateStage;
 import emulater.application.layout.selection.chapter.center.exam.ExecutionBox;
+import emulater.event.EventActionService;
 import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.event.Event;
 
-public class ExecutionEventAction extends Service<Boolean> {
-
-    public ExecutionEventAction(Event event) {
-        this.event = event;
-    }
-
-    private Event event;
+public class ExecutionEventAction extends EventActionService {
 
     @Override
-    protected Task<Boolean> createTask() {
+    protected void doEvent() {
 
-        return new Task<Boolean>() {
+        ExecutionBox exe = (ExecutionBox) super.getEvent().getSource();
 
-            @Override
-            protected Boolean call() throws Exception {
+        Platform.runLater(()-> {
+            EmulateStage preStage = new EmulateStage();
+            preStage.problemStart(exe);
+        });
 
-                ExecutionBox exe = (ExecutionBox) event.getSource();
-
-                Platform.runLater(()-> {
-                    EmulateStage preStage = new EmulateStage();
-                    preStage.problemStart(exe);
-                });
-
-                return Boolean.TRUE;
-
-            }
-
-        };
     }
 
 }

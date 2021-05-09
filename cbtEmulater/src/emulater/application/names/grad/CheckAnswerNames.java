@@ -5,6 +5,7 @@ import emulater.application.names.StyleNamesInterface;
 public enum CheckAnswerNames implements StyleNamesInterface {
 
     VIEW("checkans-view"),
+    CHECK_TABLE("checkans-table"),
     NUM_BOX("checkans-num-box"),
     NUM_LABEL("checkans-num-label"),
     TEXT_LABEL("checkans-text-label");

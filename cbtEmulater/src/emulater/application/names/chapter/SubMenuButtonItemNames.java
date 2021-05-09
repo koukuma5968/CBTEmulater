@@ -3,11 +3,11 @@ package emulater.application.names.chapter;
 import emulater.event.EventListener;
 import emulater.event.arrivals.ArrivalsEventHandler;
 import emulater.event.exam.ExaminationEventHandler;
-import emulater.event.storage.StorageEventHandler;
+import emulater.event.storage.ReadStorageEventHandler;
 
 public enum SubMenuButtonItemNames {
 
-    STORAGE("storage-sub-button", "試験成績", StorageEventHandler.values()),
+    STORAGE("storage-sub-button", "試験成績", ReadStorageEventHandler.values()),
     EXAM("exam-sub-button", "試験一覧", ExaminationEventHandler.values()),
     NARRIVALS("arrivals-sub-button", "新着問題", ArrivalsEventHandler.values());
 

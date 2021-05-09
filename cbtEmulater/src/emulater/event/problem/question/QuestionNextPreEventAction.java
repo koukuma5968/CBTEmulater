@@ -3,52 +3,34 @@ package emulater.event.problem.question;
 import emulater.application.layout.problem.ProblemView;
 import emulater.application.layout.problem.bottom.NextPreviousBox;
 import emulater.application.layout.problem.bottom.NextPreviousButton;
+import emulater.event.EventActionService;
 import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.event.Event;
 
-public class QuestionNextPreEventAction extends Service<Boolean> {
-
-    public QuestionNextPreEventAction(Event event) {
-        this.event = event;
-    }
-
-    private Event event;
+public class QuestionNextPreEventAction extends EventActionService {
 
     @Override
-    protected Task<Boolean> createTask() {
+    protected void doEvent() {
 
-        return new Task<Boolean>() {
+        NextPreviousButton npButton = (NextPreviousButton) super.getEvent().getSource();
+        ProblemView view = (ProblemView) ((NextPreviousBox) npButton.getParent()).getParent();
 
-            @Override
-            protected Boolean call() throws Exception {
+        Platform.runLater(()-> {
 
-                NextPreviousButton npButton = (NextPreviousButton) event.getSource();
-                ProblemView view = (ProblemView) ((NextPreviousBox) npButton.getParent()).getParent();
+            switch (npButton.getBoxStyle()) {
 
-                Platform.runLater(()-> {
+                case PRE_BOX :
+                    view.setPrevious();
+                    break;
 
-                    switch (npButton.getBoxStyle()) {
+                case NEXT_BOX :
+                    view.setNext();
+                    break;
 
-                        case PRE_BOX :
-                            view.setPrevious();
-                            break;
-
-                        case NEXT_BOX :
-                            view.setNext();
-                            break;
-
-                        default:
-                            break;
-                    }
-                });
-
-                return Boolean.TRUE;
-
+                default:
+                    break;
             }
+        });
 
-        };
     }
 
 }

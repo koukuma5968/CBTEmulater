@@ -3,6 +3,9 @@ package emulater.application.layout.problem;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,16 +14,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import emulater.application.bean.CheckAnswerBean;
+import emulater.application.bean.StorageAnswerBean;
+import emulater.application.bean.StorageBean;
 import emulater.application.layout.grad.center.CheckAnswerPane;
 import emulater.application.layout.problem.bottom.NextPreviousBox;
 import emulater.application.layout.problem.bottom.StartLabelBox;
 import emulater.application.layout.problem.center.QuestionPane;
+import emulater.application.layout.problem.top.CertificationName;
 import emulater.application.layout.problem.top.ProblemMenu;
+import emulater.application.layout.problem.top.TimerPane;
 import emulater.application.layout.selection.chapter.center.exam.ExecutionBox;
-import emulater.application.names.problem.CheckAnswerBean;
 import emulater.application.names.problem.ProblemItem;
 import emulater.application.names.problem.QuestionItem;
-import emulater.util.FileUtile;
+import emulater.util.FileUtil;
 import emulater.xml.problem.Problem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +39,8 @@ import javafx.scene.layout.Pane;
 public class ProblemView extends BorderPane {
 
     private List<Map<String, Pane>> problemViewList = new ArrayList<Map<String, Pane>>();
+    private StorageBean storage = null;
+    private String timelimit = null;
     private int position = -1;
     private final String qKey = "question";
     private final String npKey = "nextprevious";
@@ -43,6 +52,7 @@ public class ProblemView extends BorderPane {
 
     public void setLayout(ExecutionBox exe) {
 
+        this.timelimit = exe.getTime();
         ProblemMenu menu = new ProblemMenu();
         menu.setMenu(exe);
 
@@ -69,7 +79,7 @@ public class ProblemView extends BorderPane {
         List<Problem> problemList = new ArrayList<Problem>();
 
         for (File f : files.listFiles()) {
-            problemList.add((Problem) FileUtile.readProblemFile(Problem.class, f.getPath()));
+            problemList.add((Problem) FileUtil.readProblemFile(Problem.class, f.getPath()));
         }
         Collections.shuffle(problemList);
 
@@ -101,17 +111,8 @@ public class ProblemView extends BorderPane {
 
     public void setGrading() {
 
-        ObservableList<CheckAnswerBean> beanList = FXCollections.observableArrayList();
-
-        problemViewList.forEach(paneMap -> {
-
-            QuestionPane que = (QuestionPane) paneMap.get(this.qKey);
-            beanList.add(que.getCheckAnswer());
-
-        });
-
         CheckAnswerPane answer = new CheckAnswerPane();
-        answer.setAnswer(beanList);
+        answer.setAnswer(getAnswerBeanList());
 
         AnchorPane anc = new AnchorPane();
         AnchorPane.setTopAnchor(answer, 0d);
@@ -121,7 +122,53 @@ public class ProblemView extends BorderPane {
         anc.getChildren().add(answer);
 
         super.setCenter(anc);
+
         super.setBottom(null);
+
+        storage = new StorageBean();
+        storage.setDay(LocalDateTime.now());
+
+        ProblemMenu menu = (ProblemMenu) super.getTop();
+        CertificationName certName = (CertificationName) menu.getChildren().get(0);
+        TimerPane timer = (TimerPane) menu.getChildren().get(1);
+
+        storage.setName(((Label) certName.getChildren().get(1)).getText());
+
+        storage.setTime(ChronoUnit.MINUTES.between(timer.getTimer(), LocalTime.MIN.plusMinutes(Long.parseLong(this.timelimit))) + "分");
+
+        ObservableList<CheckAnswerBean> beanList = getAnswerBeanList();
+        int anscount = beanList.filtered(bean -> "〇".equals(bean.getCorrection())).size();
+
+        storage.setResult((anscount * 100 / beanList.size()) + " %");
+
+        ArrayList<StorageAnswerBean> ansBeans = new ArrayList<StorageAnswerBean>();
+        for (CheckAnswerBean ansBean : getAnswerBeanList()) {
+            StorageAnswerBean storageBean = new StorageAnswerBean();
+            storageBean.setCorrection(ansBean.getCorrection());
+            storageBean.setNumber(ansBean.getNumber());
+            storageBean.setSolution(ansBean.getSolution());
+            storageBean.setUserSel(ansBean.getUserSel());
+            ansBeans.add(storageBean);
+        }
+        storage.setAnsBeans(ansBeans);
+    }
+
+    public StorageBean getStorage() {
+        return storage;
+    }
+
+    public ObservableList<CheckAnswerBean> getAnswerBeanList() {
+
+        ObservableList<CheckAnswerBean> beanList = FXCollections.observableArrayList();
+
+        problemViewList.forEach(paneMap -> {
+
+            QuestionPane que = (QuestionPane) paneMap.get(this.qKey);
+            beanList.add(que.getCheckAnswer());
+
+        });
+
+        return beanList;
     }
 
     public QuestionPane getTargetQuestion(String targetNum) {

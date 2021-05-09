@@ -27,7 +27,8 @@ public enum QuestionNextPreEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            QuestionNextPreEventAction action = new QuestionNextPreEventAction(event);
+            QuestionNextPreEventAction action = new QuestionNextPreEventAction();
+            action.setEvent(event);
             action.start();
         });
 

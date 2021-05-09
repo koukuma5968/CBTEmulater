@@ -29,6 +29,10 @@ public class StartLabelBox extends VBox {
         HBox box = new HBox();
         box.getStyleClass().add(QuestionItem.RUN_BOX.getStyleName());
 
+        for (EventListener handler : QuestionStartEventHandler.values()) {
+            box.addEventHandler(handler.getEventType(), handler.getEvent());
+        }
+
         ImageView image = new ImageView();
         image.getStyleClass().add(QuestionItem.IMAGE.getStyleName());
         box.getChildren().add(image);
@@ -40,8 +44,5 @@ public class StartLabelBox extends VBox {
 
         super.getChildren().add(box);
 
-        for (EventListener handler : QuestionStartEventHandler.values()) {
-            super.addEventHandler(handler.getEventType(), handler.getEvent());
-        }
     }
 }

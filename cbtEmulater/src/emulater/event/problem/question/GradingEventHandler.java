@@ -27,7 +27,8 @@ public enum GradingEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            GradingEventAction action = new GradingEventAction(event);
+            GradingEventAction action = new GradingEventAction();
+            action.setEvent(event);
             action.start();
         });
 

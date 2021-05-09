@@ -16,7 +16,9 @@ import emulater.xml.XmlElementInterface;
 
 public class JAXBUtil {
 
-    public static final String problemRoot = "prop/problem/";
+    public static final String PROBLEM_ROOT = "prop/problem/";
+    public static final String CHAPTER_LIST = "/chapter/ChapterList.xml";
+    public static final String QUALIFICATION = "prop/menu/QualificationList.xml";
 
     public static XmlElementInterface getXMLReder(Class<? extends XmlElementInterface> clazz, BufferedReader br) {
 

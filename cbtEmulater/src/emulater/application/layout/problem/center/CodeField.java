@@ -15,6 +15,7 @@ public class CodeField extends AnchorPane {
 
         Label code = new Label();
         code.setText(text);
+        code.getStyleClass().add(QuestionItem.CODE.getStyleName());
 
         AnchorPane.setTopAnchor(code, 0d);
         AnchorPane.setLeftAnchor(code, 0d);

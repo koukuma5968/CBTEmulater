@@ -6,6 +6,7 @@ public enum QuestionItem {
     VIEW_TITLE("question-view"),
     QUEST_NUM("question-number"),
     QUEST_BOX("question-box"),
+    QUEST_BORDER("question-border"),
     STATEMENT("question-statement"),
     CODE("question-code"),
     CODE_FIELD("question-code-field"),

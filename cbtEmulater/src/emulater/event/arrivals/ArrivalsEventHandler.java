@@ -27,7 +27,8 @@ public enum ArrivalsEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            ArrivalsEventAction action = new ArrivalsEventAction(event);
+            ArrivalsEventAction action = new ArrivalsEventAction();
+            action.setEvent(event);
             action.start();
         });
 

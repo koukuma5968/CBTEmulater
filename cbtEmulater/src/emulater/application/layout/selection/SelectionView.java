@@ -1,15 +1,18 @@
 package emulater.application.layout.selection;
 
+import emulater.application.bean.StorageBean;
 import emulater.application.layout.selection.chapter.center.CenterPane;
 import emulater.application.layout.selection.chapter.tree.LeftPane;
 import emulater.application.layout.selection.menu.TopMenuPane;
+import emulater.application.layout.selection.storage.ShowStoragePane;
+import emulater.application.names.chapter.SelectionViewNames;
 import javafx.scene.layout.BorderPane;
 
 public class SelectionView extends BorderPane {
 
     public SelectionView() {
         super();
-        super.getStyleClass().add("selection-pane");
+        super.getStyleClass().add(SelectionViewNames.VIEW.getStyleName());
         init();
     }
 
@@ -33,7 +36,17 @@ public class SelectionView extends BorderPane {
     }
 
     public void setItemView(String Path) {
-        ((CenterPane) super.getCenter()).setChapter(Path);
+        CenterPane center = new CenterPane();
+        center.setChapter(Path);
+        super.setCenter(center);
+    }
+
+    public void setStrageItem(StorageBean storage) {
+
+        ShowStoragePane pane = new ShowStoragePane();
+        pane.setStorage(storage);
+
+        super.setCenter(pane);
     }
 
 }

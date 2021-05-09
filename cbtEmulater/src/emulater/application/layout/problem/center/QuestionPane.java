@@ -1,14 +1,16 @@
 package emulater.application.layout.problem.center;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
-import emulater.application.names.problem.CheckAnswerBean;
+import emulater.application.bean.CheckAnswerBean;
 import emulater.application.names.problem.QuestionItem;
 import emulater.util.RequestCipher;
 import emulater.xml.problem.Question;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class QuestionPane extends BorderPane {
@@ -38,14 +40,16 @@ public class QuestionPane extends BorderPane {
         super.setTop(number);
 
         QuestionItemBox box = new QuestionItemBox();
-        box.setIrem(question);
+        box.setItem(question);
 
-        ScrollPane sc = new ScrollPane();
-        sc.setContent(box);
-        sc.setFitToHeight(true);
-        sc.setFitToWidth(true);
+        AnchorPane anc = new AnchorPane();
+        AnchorPane.setTopAnchor(box, 0d);
+        AnchorPane.setLeftAnchor(box, 0d);
+        AnchorPane.setRightAnchor(box, 0d);
+        AnchorPane.setBottomAnchor(box, 0d);
+        anc.getChildren().add(box);
 
-        super.setCenter(sc);
+        super.setCenter(anc);
 
         solution = RequestCipher.decode(question.getSolution());
 
@@ -82,9 +86,24 @@ public class QuestionPane extends BorderPane {
             userSel.deleteCharAt(userSel.length() - 1);
         }
 
-        bean.setCorrection(this.solution.equals(userSel.toString()));
+        bean.setCorrection(this.solution.equals(userSel.toString()) ? "〇" : "×");
         bean.setUserSel(userSel.toString());
 
         return bean;
     }
+
+    public List<Label> getSolurions() {
+
+        List<Label> solList = new ArrayList<Label>();
+
+        StringTokenizer token = new StringTokenizer(this.solution, ",");
+        while (token.hasMoreTokens()) {
+            Label l = new Label();
+            l.setText(token.nextToken());
+            solList.add(l);
+        }
+
+        return solList;
+    }
+
 }

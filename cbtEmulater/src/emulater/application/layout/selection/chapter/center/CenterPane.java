@@ -3,6 +3,7 @@ package emulater.application.layout.selection.chapter.center;
 import emulater.application.layout.selection.chapter.center.cert.CertificationPane;
 import emulater.application.layout.selection.chapter.center.exam.ExaminationPane;
 import emulater.application.layout.selection.chapter.center.ordinal.OrdinalPane;
+import emulater.application.names.chapter.CenterPaneNames;
 import emulater.util.JAXBUtil;
 import emulater.xml.chapter.Chapter;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ public class CenterPane extends VBox {
 
     public CenterPane() {
         super();
-        super.getStyleClass().add("center-pane");
+        super.getStyleClass().add(CenterPaneNames.VIEW.getStyleName());
         Label l = new Label("左のリストから選択");
         l.getStyleClass().add("init-title");
         super.getChildren().add(l);
@@ -38,7 +39,7 @@ public class CenterPane extends VBox {
     }
 
     protected Chapter getCapterList(String path) {
-        return (Chapter) JAXBUtil.getXmlObject(Chapter.class, "prop/problem/" + path + "/chapter/ChapterList.xml");
+        return (Chapter) JAXBUtil.getXmlObject(Chapter.class, JAXBUtil.PROBLEM_ROOT + path + JAXBUtil.CHAPTER_LIST);
     }
 
 }

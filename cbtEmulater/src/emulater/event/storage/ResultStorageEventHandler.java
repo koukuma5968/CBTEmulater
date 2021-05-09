@@ -7,12 +7,12 @@ import javafx.event.EventType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public enum StorageEventHandler implements EventListener {
+public enum ResultStorageEventHandler implements EventListener {
 
     KEY_PRES(KeyEvent.KEY_PRESSED),
     MOUSE_CLICK(MouseEvent.MOUSE_CLICKED);
 
-    StorageEventHandler(EventType<? extends Event> type) {
+    private ResultStorageEventHandler(EventType<? extends Event> type) {
         this.type = type;
     }
 
@@ -27,11 +27,11 @@ public enum StorageEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            StorageEventAction action = new StorageEventAction(event);
+            ResultStorageEventAction action = new ResultStorageEventAction();
+            action.setEvent(event);
             action.start();
         });
 
         return handler;
     }
-
 }

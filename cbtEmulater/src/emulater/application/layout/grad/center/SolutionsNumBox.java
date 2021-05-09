@@ -1,7 +1,8 @@
 package emulater.application.layout.grad.center;
 
+import emulater.application.bean.CheckAnswerBean;
+import emulater.application.layout.grad.bottom.ResultStoragePane;
 import emulater.application.names.grad.CheckAnswerNames;
-import emulater.application.names.problem.CheckAnswerBean;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +27,15 @@ public class SolutionsNumBox extends VBox {
 
         setLabel((anscount * 100 / beanList.size()) + " %", CheckAnswerNames.NUM_LABEL);
 
+        ResultStoragePane storage = new ResultStoragePane();
+        storage.setStrageButton();
+
+        AnchorPane anc = new AnchorPane();
+        AnchorPane.setLeftAnchor(storage, 50d);
+        AnchorPane.setRightAnchor(storage, 50d);
+        anc.getChildren().add(storage);
+
+        super.getChildren().add(anc);
     }
 
     private void setLabel(String text, CheckAnswerNames names) {

@@ -6,7 +6,7 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 
-public enum CheckAnswerReviewEventHandler  implements EventListener {
+public enum CheckAnswerReviewEventHandler implements EventListener {
 
     MOUSE_CLICK(MouseEvent.MOUSE_CLICKED);
 
@@ -25,7 +25,8 @@ public enum CheckAnswerReviewEventHandler  implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            CheckAnswerReviewEventAction action = new CheckAnswerReviewEventAction(event);
+            CheckAnswerReviewEventAction action = new CheckAnswerReviewEventAction();
+            action.setEvent(event);
             action.start();
         });
 

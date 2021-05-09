@@ -27,7 +27,8 @@ public enum ExaminationEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            ExaminationEventAction action = new ExaminationEventAction(event);
+            ExaminationEventAction action = new ExaminationEventAction();
+            action.setEvent(event);
             action.start();
         });
 

@@ -61,13 +61,15 @@ public enum TopMenuEventHandler implements EventListener {
 
     protected void moveAction(Event event) {
 
-        StageMoveEventAction action = new StageMoveEventAction(event);
+        StageMoveEventAction action = new StageMoveEventAction();
+        action.setEvent(event);
         action.start();
     }
 
     protected void fullScreenAction(Event event) {
 
-        FullScreenEventAction action = new FullScreenEventAction(event);
+        FullScreenEventAction action = new FullScreenEventAction();
+        action.setEvent(event);
         action.start();
     }
 }

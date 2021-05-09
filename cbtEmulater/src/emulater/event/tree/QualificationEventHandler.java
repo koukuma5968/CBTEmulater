@@ -27,7 +27,8 @@ public enum QualificationEventHandler implements EventListener {
     public EventHandler<Event> getEvent() {
 
         EventHandler<Event> handler = (event-> {
-            QualificationEventAction action = new QualificationEventAction(event);
+            QualificationEventAction action = new QualificationEventAction();
+            action.setEvent(event);
             action.start();
         });
 

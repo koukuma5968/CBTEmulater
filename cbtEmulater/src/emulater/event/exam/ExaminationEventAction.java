@@ -4,36 +4,19 @@ import emulater.application.layout.selection.SelectionView;
 import emulater.application.layout.selection.chapter.tree.LeftPane;
 import emulater.application.layout.selection.chapter.tree.item.QualificationList;
 import emulater.application.layout.selection.chapter.tree.menu.SubMenuItem;
+import emulater.event.EventActionService;
 import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.event.Event;
 
-public class ExaminationEventAction extends Service<Boolean> {
-
-    public ExaminationEventAction(Event event) {
-        this.event = event;
-    }
-
-    private Event event;
+public class ExaminationEventAction extends EventActionService {
 
     @Override
-    protected Task<Boolean> createTask() {
+    protected void doEvent() {
 
-        return new Task<Boolean>() {
+        LeftPane left = (LeftPane) ((SelectionView) ((SubMenuItem) super.getEvent().getSource()).getScene().getRoot()).getLeft();
+        QualificationList qua = (QualificationList) left.getCenter();
 
-            @Override
-            protected Boolean call() throws Exception {
+        Platform.runLater(() -> qua.setCategory());
 
-                LeftPane left = (LeftPane) ((SelectionView) ((SubMenuItem) event.getSource()).getScene().getRoot()).getLeft();
-                QualificationList qua = (QualificationList) left.getCenter();
-
-                Platform.runLater(() -> qua.setCategory());
-
-                return Boolean.TRUE;
-
-            }
-        };
     }
 
 }

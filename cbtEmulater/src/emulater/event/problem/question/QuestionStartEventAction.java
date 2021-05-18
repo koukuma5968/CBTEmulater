@@ -8,11 +8,13 @@ import emulater.application.layout.problem.top.ProblemMenu;
 import emulater.application.layout.problem.top.TimerPane;
 import emulater.event.EventActionService;
 import emulater.util.Constant;
+import emulater.util.EmulaterLogger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class QuestionStartEventAction extends EventActionService {
@@ -28,12 +30,17 @@ public class QuestionStartEventAction extends EventActionService {
             view.setNext();
             Timeline timeline = timerpane.getTimeline();
             timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), (event -> {
+
+                timerpane.addCyclecount(1);
+                EmulaterLogger.info(QuestionStartEventAction.class.getSimpleName(), String.valueOf(timerpane.getCyclecount()));
+                EmulaterLogger.info(QuestionStartEventAction.class.getSimpleName(), String.valueOf(timeline.getCycleCount()));
+
                 Text text = (Text) timerpane.getChildren().get(1);
                 LocalTime timer = timerpane.getTimer().minusSeconds(1l);
-                if (timer.getHour() == 12 && timer.getMinute() == 0 && timer.getSecond() == 0) {
-                    GradingEventAction action = new GradingEventAction();
-                    action.setEvent(event);
-                    action.start();
+                if (timeline.getCycleCount() <= timerpane.getCyclecount()) {
+                    timeline.stop();
+                    view.setGrading();
+                    ((Stage) view.getScene().getWindow()).setFullScreen(false);
                 } else {
                     timerpane.setTimer(timer);
                     text.setText(timerpane.getTimer().format(Constant.TIME_FORMAT));

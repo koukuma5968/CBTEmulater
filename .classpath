@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="cbtEmulater/src"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/istack-commons-tools.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/javax.activation.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/jaxb-runtime.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/stax-ex.jar"/>
+	<classpathentry kind="lib" path="cbtEmulater/lib/txw2.jar"/>
+	<classpathentry kind="output" path="cbtEmulater/bin"/>
+</classpath>

@@ -27,10 +27,10 @@ public class FileUtil {
 
         try (
             GZIPInputStream gs = new GZIPInputStream(new BufferedInputStream(new FileInputStream(path)));
-            BufferedReader br = new BufferedReader(new InputStreamReader(gs));
+            BufferedReader br = new BufferedReader(new InputStreamReader(gs, "UTF-8"));
         ) {
 
-            XmlElementInterface prob = JAXBUtil.getXMLReder(clazz, br);
+            XmlElementInterface prob = JAXBUtil.getXMLStream(clazz, gs);
             return prob;
 
         } catch (FileNotFoundException e) {

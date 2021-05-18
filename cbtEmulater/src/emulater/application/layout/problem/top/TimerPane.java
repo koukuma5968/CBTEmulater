@@ -14,6 +14,15 @@ public class TimerPane extends HBox {
 
     private Timeline timeline = new Timeline();
     private LocalTime timer = null;
+    private int cyclecount = 0;
+
+    public int getCyclecount() {
+        return cyclecount;
+    }
+
+    public void addCyclecount(int cyclecount) {
+        this.cyclecount += cyclecount;
+    }
 
     public LocalTime getTimer() {
         return timer;

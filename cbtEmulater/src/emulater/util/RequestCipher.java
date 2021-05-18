@@ -49,7 +49,7 @@ public class RequestCipher {
             Cipher cip = Cipher.getInstance(ALGORITHM);
             cip.init(Cipher.DECRYPT_MODE, key, iv);
             byte[] byteToken = Base64.getDecoder().decode(URLDecoder.decode(text, "UTF-8"));
-            dec = new String(cip.doFinal(byteToken));
+            dec = new String(cip.doFinal(byteToken), "UTF-8");
 
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException e) {
             e.printStackTrace();

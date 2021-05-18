@@ -6,6 +6,7 @@ import emulater.application.layout.problem.center.QuestionPane;
 import emulater.application.layout.problem.top.TerminationButton;
 import emulater.application.layout.selection.SelectionView;
 import emulater.application.layout.selection.chapter.center.exam.ExecutionBox;
+import emulater.util.EmulaterLogger;
 import emulater.util.StyleUtil;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class EmulateStage extends Application {
+
+    private final String cName = EmulateStage.class.getSimpleName();
 
     public EmulateStage() {
         super();
@@ -26,6 +29,7 @@ public class EmulateStage extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        EmulaterLogger.info(cName, "アプリケーション開始");
         SelectionView pane = new SelectionView();
 
         Scene scene = new Scene(pane);
@@ -58,9 +62,9 @@ public class EmulateStage extends Application {
 
         Stage stage = (Stage) scene.getWindow();
         stage.setScene(scene);
-//        stage.setFullScreen(true);
-//        stage.setFullScreenExitHint("");
-//        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.show();
 
     }

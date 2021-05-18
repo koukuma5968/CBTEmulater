@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.zip.GZIPInputStream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -49,6 +50,28 @@ public class JAXBUtil {
             e.printStackTrace();
             return null;
         }
+
+    }
+
+    public static XmlElementInterface getXMLStream(Class<? extends XmlElementInterface> clazz, GZIPInputStream gs) {
+
+        XmlElementInterface element = null;
+
+        try {
+            JAXBContext con = JAXBContext.newInstance(clazz);
+            Unmarshaller unMarshal = con.createUnmarshaller();
+
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader reader = factory.createXMLStreamReader(gs, "UTF-8");
+
+            element = (XmlElementInterface) unMarshal.unmarshal(reader);
+
+        } catch (JAXBException | XMLStreamException e) {
+            e.printStackTrace();
+        }
+
+        return element;
+
 
     }
 }

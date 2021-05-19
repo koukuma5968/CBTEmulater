@@ -53,7 +53,7 @@
 
 /* 試験概要 */
 .cert-view {
-  -fx-padding:5 15;
+  -fx-padding: 5;
   -fx-alignment: center;
   -fx-background-color : rgba(243, 243, 243, 1);
   -fx-background-radius: 5;
@@ -120,30 +120,47 @@
 /* 章節 */
 .ordinal-view {
   -fx-alignment: top-left;
-  -fx-padding: 5 0;
+  -fx-padding: 5;
   -fx-background-color : rgba(243, 243, 243, 1);
 }
 
-.ordinal-grid {
+.ordinal-content-grid {
   -fx-padding:10;
+}
+
+.ordinal-content-title {
+  -fx-padding:10;
+  -fx-background-color : rgba(160, 216, 239, 1);
+  -fx-background-radius:  5 5 0 0;
+}
+
+.ordinal-content-value {
+  -fx-fit-to-width: true;
+  -fx-pannable: true;
 }
 
 .ordinal-head {
   -fx-padding: 5;
 }
 
+.ordinal-title {
+  -fx-padding:10;
+  -fx-background-color : rgba(243, 243, 243, 1);
+  -fx-background-radius: 5 5 0 0;
+  -fx-border-style: solid;
+  -fx-border-radius: 2 2 0 0;
+  -fx-border-color: rgba(160, 216, 239, 1);
+  -fx-border-width: 1 1 0 1;
+}
+
 .ordinal-clauesGroup {
   -fx-padding:10;
   -fx-background-color :rgba(255, 255, 255, 1);
   -fx-background-radius:  0 0 5 5;
-}
-
-.ordinal-title {
-  -fx-padding:10;
-/*   -fx-background-color : linear-gradient(to bottom right, rgba(160, 216, 239, 1) 0%, rgba(193, 228, 233, 0.5) 50%, rgba(160, 216, 239, 0.7) 90%); */
-  -fx-background-color : rgba(160, 216, 239, 1);
-  -fx-background-radius:  5 5 0 0;
-/*   -fx-effect: dropshadow(gaussian, rgba(160, 216, 239, 1), 5, 0, 2, 2); */
+  -fx-border-style: solid;
+  -fx-border-radius: 0 0 2 2;
+  -fx-border-color: rgba(160, 216, 239, 1);
+  -fx-border-width: 0 1 1 1;
 }
 
 .ordinal-value {

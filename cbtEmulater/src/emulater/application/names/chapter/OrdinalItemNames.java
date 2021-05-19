@@ -2,8 +2,10 @@ package emulater.application.names.chapter;
 
 public enum OrdinalItemNames {
 
-    VIEW_TITLE(0, "ordinal-view"),
-    TOP_TITLE(Double.MAX_VALUE, "ordinal-grid"),
+    VIEW(0, "ordinal-view"),
+    CONTENT_GRID(Double.MAX_VALUE, "ordinal-content-grid"),
+    CONTENT_TITLE(Double.MAX_VALUE, "ordinal-content-title"),
+    CONTENT_VALUE(Double.MAX_VALUE, "ordinal-content-value"),
     ORDINAL_HEAD(0, "ordinal-head"),
     ORDINAL_ITEM(0, "ordinal-clauesGroup"),
     ITEM_TITLE(Double.MAX_VALUE, "ordinal-title"),

@@ -7,16 +7,16 @@ import emulater.application.names.chapter.CenterPaneNames;
 import emulater.util.JAXBUtil;
 import emulater.xml.chapter.Chapter;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 
-public class CenterPane extends VBox {
+public class CenterPane extends BorderPane {
 
     public CenterPane() {
         super();
         super.getStyleClass().add(CenterPaneNames.VIEW.getStyleName());
         Label l = new Label("左のリストから選択");
         l.getStyleClass().add("init-title");
-        super.getChildren().add(l);
+        super.setCenter(l);
     }
 
     public void setChapter(String path) {
@@ -27,15 +27,15 @@ public class CenterPane extends VBox {
 
         CertificationPane cert = new CertificationPane();
         cert.setLayout(chapter);
-        super.getChildren().add(cert);
+        super.setTop(cert);
 
         OrdinalPane ordinal = new OrdinalPane();
         ordinal.setLayout(chapter.getOrdinal());
-        super.getChildren().add(ordinal);
+        super.setCenter(ordinal);
 
         ExaminationPane exam = new ExaminationPane();
         exam.setLayout(path, chapter);
-        super.getChildren().add(exam);
+        super.setBottom(exam);
     }
 
     protected Chapter getCapterList(String path) {

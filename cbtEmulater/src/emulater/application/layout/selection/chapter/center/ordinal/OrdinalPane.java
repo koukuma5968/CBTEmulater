@@ -5,7 +5,7 @@ import java.util.List;
 import emulater.application.names.chapter.OrdinalItemNames;
 import emulater.xml.chapter.Ordinal;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -14,22 +14,21 @@ public class OrdinalPane extends VBox {
 
     public OrdinalPane() {
         super();
-        super.getStyleClass().add(OrdinalItemNames.VIEW_TITLE.getStyleName());
-
+        super.getStyleClass().add(OrdinalItemNames.VIEW.getStyleName());
     }
 
     public void setLayout(List<Ordinal> ordinalList) {
 
-        super.getChildren().add(getheader(ordinalList));
+        getheader(ordinalList);
 
         VBox.setVgrow(this, Priority.ALWAYS);
 
     }
 
-    private AnchorPane getheader(List<Ordinal> ordinalList) {
+    private void getheader(List<Ordinal> ordinalList) {
 
         GridPane grid = new GridPane();
-        grid.getStyleClass().add(OrdinalItemNames.TOP_TITLE.getStyleName());
+        grid.getStyleClass().add(OrdinalItemNames.CONTENT_GRID.getStyleName());
 
         ordinalList.forEach(ordinal -> {
 
@@ -49,18 +48,17 @@ public class OrdinalPane extends VBox {
             GridPane.setHgrow(head, Priority.ALWAYS);
             GridPane.setVgrow(head, Priority.ALWAYS);
 
-            GridPane.setConstraints(head, (ordinal.getNumber()-1)%4, (ordinal.getNumber()-1)/4);
+            GridPane.setConstraints(head, (ordinal.getNumber()-1)%3, (ordinal.getNumber()-1)/3);
             grid.getChildren().add(head);
 
         });
 
-        AnchorPane anc = new AnchorPane();
+        ScrollPane sc = new ScrollPane();
+        sc.getStyleClass().add(OrdinalItemNames.CONTENT_VALUE.getStyleName());
+        sc.setContent(grid);
 
-        AnchorPane.setLeftAnchor(grid, 0d);
-        AnchorPane.setRightAnchor(grid, 0d);
-        anc.getChildren().add(grid);
-
-        return anc;
+        super.getChildren().add(getContents(OrdinalItemNames.CONTENT_TITLE, "試験内容"));
+        super.getChildren().add(sc);
 
     }
 
